@@ -1,0 +1,36 @@
+<%- include('./Partials/layout.ejs') %>
+<div class="container" style="margin-top: 20px">
+    <% if(err.length > 0) { %>
+      <div class="alert <%=styletag%> alert-dismissible fade in" style="width: 100%;text-align: center;" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= err %></strong>
+      </div>
+    <% } %>
+  <div class="page-header upper-heading"><strong>
+      SELECT A TRACK</strong>
+  </div>
+
+  <div class="container middle">
+    <div class="row " >
+      <nav class="col-sm-6 ">
+          <ul class="nav navbar-nav">
+            <li  class="middle-title"><a class="btn btn-act" href="/section/Algorithms" style="color: black  ;  "><img src="/images/algo.png"><strong>  Algorithms</strong></a></li>
+            <li  class="middle-title"><a class="btn btn-act" href="/section/Data Structures" style="color: black  ;  "><img src="/images/ds.png"><strong>  Data Structures</strong></a></li>
+          </ul>
+      </nav>
+
+      <nav class="col-sm-6">
+          <ul class="nav navbar-nav">
+            <li  class="middle-title"><a class="btn btn-act" href="/section/C++" style="color: black  ;"><img src="/images/c++.png"><strong>  C++</strong></a></li>
+            <li  class="middle-title"><a class="btn btn-act" href="/section/Java" style="color: black  ; "><img src="/images/java.png"><strong>  JAVA</strong></a></li>
+          </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%- include('./Partials/layoutfooter.ejs') %>
+
+</body>
+</html>

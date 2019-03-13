@@ -1,0 +1,41 @@
+<%- include('../Partials/layout.ejs') %>
+
+<nav class="navbar navbar-default custom-head">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="inactive"><a href="/admmin/addSection" >Add Section</a></li>
+
+            <li ><a class="inactive" >Add Questions</a></li>
+
+        </ul>
+    </div>
+</nav>
+<div class="container" style="margin-top: 20px">
+    <% if(err.length > 0) { %>
+    <div class="alert <%=styletag%> alert-dismissible fade in" style="width: 90%;text-align: center;" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= err %></strong>
+    </div>
+    <% } %>
+</div>
+<div class="container" style="margin-top: 3%">
+    <form method="post" action="/admin/add" enctype="multipart/form-data">
+
+        <div class="form-group" >
+            <label>Section Name:</label>
+            <input type="text"  class="form-control" name="sectionname" style="width: 50%"/>
+        </div>
+        <div class="form-group">
+            <label>Upload Section Photo:</label>
+            <input   name="sectionpic" type="file" class="form-control"  accept="image/*" style="width: 50%"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Add" ></input>
+        </div>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%- include('../Partials/layoutfooter.ejs') %>
+</body>
+</html>

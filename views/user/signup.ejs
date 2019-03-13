@@ -1,0 +1,40 @@
+<%- include('../Partials/layout.ejs') %>
+<div class="container " style="margin-top: 30px;" >
+
+        <% if(msg.length){ %>
+        <div class="alert alert-info alert-dismissible fade in" style="text-align: center;" >
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong><%= msg %></strong></div>
+        <% } %>
+
+            <form action="/signup" method="post" class="form-style" >
+
+                <center><h4 style="color: #008687;"><strong>Enter Credentials</strong></h4></center>
+                <div class="form-group">
+                    <label>Username<strong style="color: red">*</strong> :</label>
+                    <input type="text"  required name="username" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label>Full Name<strong style="color: red">*</strong> :</label>
+                    <input type="text" required name="fname" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label>Password<strong style="color: red">* </strong>:</label>&nbsp;
+                    <input type="password" required  name="password" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password<strong style="color: red">* </strong> :</label>
+                    <input type="password" required name="cpassword" class="form-control" >
+                </div>
+                <center>
+                    <input type="submit"  value="Submit" class="btn btn-primary">
+                </center>
+            </form>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%- include('../Partials/layoutfooter.ejs') %>
+
+</body>
+</html>

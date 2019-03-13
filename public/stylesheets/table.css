@@ -1,0 +1,108 @@
+table.dataTable {
+    clear: both;
+    margin-top: 20px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border: 3px solid #37474F;
+    border-spacing: 120px;
+    border-radius: 2px;
+
+}
+
+table.dataTable tr{
+    box-shadow: inset 0 -5px 45px #00848a, 0 1px 1px rgba(255,255,255,0.2);
+    -webkit-transition: box-shadow .5s ease;
+    -moz-transition: box-shadow .5s ease;
+    -o-transition: box-shadow .5s ease;
+    -ms-transition: box-shadow .5s ease;
+    transition: box-shadow .5s ease;
+}
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap
+}
+
+table.dataTable td,
+table.dataTable th {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+table.dataTable thead th {
+    background: #37474F;
+    color: white;
+}
+table.dataTable tbody td {
+    background-color: #fff;
+    color: black;
+    margin-top: 2px;
+    padding: 30px;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #b76e2c;
+    color: black;
+}
+
+.tableUname
+{
+    font-weight: bold;
+    /* width: 250px; */
+}
+/* .tablePhone
+{
+  width: 100px;
+}
+.tableAction
+{
+  width: 200px;
+}
+.tableRole,.tableStatus
+{
+  width: 60px;
+} */
+.tableId
+{
+    display: none
+}
+#usertable{
+    display:none;
+}
+
+#CommunityRuleFilter
+{
+    width: 10%;
+    border:2px solid #2D312C;
+    background-color: #2D312C;
+    color: #fff;
+}
+.ComTableName
+{
+    text-transform: capitalize;
+}
+#CommunityRuleFilter
+{
+    width: 10%;
+    border:2px solid #2D312C;
+    background-color: #2D312C;
+    color: #fff;
+}
+.ComTableName
+{
+    text-transform: capitalize;
+}
+
+.CommunityProfilePic
+{
+    height: 100px;
+    width: 100px;
+    float: left;
+}
+#CommunityInfoPop
+{
+    margin-left: 20%;
+    margin-top: 7%;
+    font-weight: bold;
+    font-size: 15px;
+}

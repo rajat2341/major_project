@@ -1,0 +1,33 @@
+<%- include('../Partials/layout.ejs') %>
+
+<div class="page-header " style="margin-top: 10px;" xmlns="http://www.w3.org/1999/html">
+    <ul class="breadcrumb">
+        <li><a href="/"><strong>Dashboard</strong></a></li>
+        <li><a style="color: #424242"><strong><%= data.sectionname%></strong></a></li>
+    </ul>
+</div>
+<%for(i=0;i<data.questionlist.length;i++){%>
+    <div class="container list-group list-style" >
+            <div class="list-group-item list-item-style" style="background-color: #3c555f;padding-top:4px;padding-left: 40px;">
+                <h4 class=""><strong style="color: white"><%=data.questionlist[i].qname%></strong>
+                    <a href="/challenges/<%=data.questionlist[i].qname%>/<%=i%>/problem" style="float: right;" class="btn btn-default list-btn-style"><b>
+                            <%if(!data.questionlist[i].isAttempted){%>
+                                Try Question
+                            <%}else{%>
+                                Attempted
+                            <%}%>
+                        </b>
+                    </a>
+                </h4>
+            </div>
+            <div class="list-group-item list-item-style1" style="border-bottom-left-radius:40px">
+                <p style="color: #7b7b7b">Level: <%=data.questionlist[i].qlevel%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max Score: <%=data.questionlist[i].qscore%></p>
+            </div>
+        </div>
+    </div>
+<%}%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%- include('../Partials/layoutfooter.ejs') %>
+</body>
+</html>
