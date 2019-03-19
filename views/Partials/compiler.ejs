@@ -1,0 +1,29 @@
+<center>
+    <h1>Compiler</h1>
+    <form id="myform" name="myform" method="post" action="/compilecode">
+    <div>
+        <h3>Code</h3>
+        <h5>
+            Language : <select name="lang">
+            <option value="C">C</option>
+            <option value="C++">C++</option>
+            <option value="Java">Java</option>  
+            <option value="Python">Python</option> 
+            </select>
+        </h5>
+    </div>
+    
+    <textarea rows="13" cols="100" id="code" name="code" ></textarea> 
+    <br/>
+    Compile With Input : 
+    <input type="radio" name="inputRadio" id="inputRadio" value="true"/>yes
+    <input type="radio" name="inputRadio" id="inputRadio" value="false"/>No
+    <br />
+    <div id="inputArea">
+        <h3>Input</h3>
+        <textarea rows="10"  cols="100" id="input" name="input" ></textarea> 
+        <br/>
+    </div><br />
+    <input class="btn btn-primary" type="submit" value="submit"  name="submit" />
+    </form>
+    </center>

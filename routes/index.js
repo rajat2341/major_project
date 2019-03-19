@@ -8,6 +8,10 @@ var multer = require('multer');
 var helper=require('../helper');
 var path = require('path');
 var fs = require('fs');
+var compiler = require('compilex');
+var options = {stats : true}; //prints stats on console 
+compiler.init(options);
+
 
 router.get('/', function(req, res, next) {
     if(req.session.user){

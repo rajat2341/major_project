@@ -12,9 +12,6 @@ var logger = require('morgan');
 var mongoDb = require('connect-mongo')(session);
 var index = require('./routes/index');
 var admin= require('./routes/admin/addSection');
-var compiler = require('compilex');
-var options = {stats : true}; //prints stats on console 
-compiler.init(options);
 
 var app = express();
 
