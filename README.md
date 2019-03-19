@@ -17,3 +17,6 @@ Installation steps:
 
     1.c. Python
         Installation : You can get and install Python from here(https://www.python.org/downloads/)
+
+2. Setting Up Enviroment Variables for the Server -
+    Set all the paths of the compilers of the bin folder in the system variables path in Enviroment Variables.
