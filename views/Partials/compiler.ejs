@@ -1,5 +1,7 @@
 <center>
     <h1>Compiler</h1>
+</center>
+<div class="container">
     <form id="myform" name="myform" method="post" action="/compilecode">
     <div>
         <h3>Code</h3>
@@ -12,17 +14,20 @@
             </select>
         </h5>
     </div>
-    <textarea rows="13" cols="100" id="code" name="code" ></textarea> 
+
+    <div>
+        <textarea id="editor" name="code"></textarea>
+    </div>
     <br/>
     Compile With Input : 
-    <input type="radio" name="inputRadio" id="inputRadio" value="true"/>yes
-    <input type="radio" name="inputRadio" id="inputRadio" value="false"/>No
+    <input type="radio" checked="checked" name="inputRadio" value="Yes" id="yes" class="static_class" />
+          <label for="yes">Yes &nbsp;</label>
+          <input type="radio" checked="checked" name="inputRadio" value="No" id="no" class="static_class"/>
+          <label for="no">No </label>
     <br />
-    <div id="inputArea">
-        <h3>Input</h3>
-        <textarea rows="10"  cols="100" id="input" name="input" ></textarea> 
-        <br/>
-    </div><br />
+    <div id="extra">
+            <textarea cols="84" wrap="physical" rows="4" name="input" class="textboxid4 style"></textarea>
+          </div><br />
     <input class="btn btn-primary" type="submit" value="submit"  name="submit" />
     </form>
-    </center>
+</div>

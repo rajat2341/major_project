@@ -46,6 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
 
 app.use(session({
         secret: 'qwertyuiopasdfghjkl',

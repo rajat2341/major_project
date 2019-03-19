@@ -42,13 +42,45 @@
 <%- include('../Partials/layoutfooter.ejs') %>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="/scripts/codemirror/lib/codemirror.js"></script>
+<link href="/scripts/codemirror/lib/codemirror.css" rel="stylesheet"/>
+<script src="/scripts/codemirror/mode/python/python.js"></script>
+<script src="/scripts/codemirror/mode/clike/clike.js"></script>
+<link href="/scripts/codemirror/theme/dracula.css" rel="stylesheet"/>
+<script src="/scripts/codemirror/addon/edit/closetag.js"></script>
+<script src="/scripts/codemirror/addon/edit/closebrackets.js"></script>
+<script src="/scripts/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="/scripts/codemirror/addon/edit/matchtags.js"></script>
+<script src="/scripts/codemirror/addon/hint/show-hint.js"></script>
+<script src="/scripts/codemirror/addon/hint/css-hint.js"></script>
+<link href="/scripts/codemirror/addon/hint/show-hint.css" rel="stylesheet"/>
 <script>
+    $(function(){
+        $(".static_class").click(function(){
+          if($(this).val() === "Yes")
+            $("#extra").show("fast");
+          else
+            $("#extra").hide("fast");
+        });
+      });
     $(document).ready(function() {
         var table = $('#example').DataTable();
         $('#example tbody').on( 'click', 'tr', function () {
             console.log( table.row( this ).data()[2] );
         } );
     } );
+    var editor = CodeMirror.fromTextArea
+    (document.getElementById('editor'),{
+        mode:"text/x-csrc",
+        theme:"dracula",
+        lineNumbers: true,
+        autoCloseTags: true,
+        matchBrackets: true,
+        autoCloseBrackets: true,
+        matchTags: false,
+        extraKeys: {"Ctrl-Space": "autocomplete"}
+    });
+    code.setSize("1000","450");
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

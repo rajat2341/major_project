@@ -192,7 +192,10 @@ router.post('/compilecode' , function (req , res ) {
                 res.send(data);
             });
         }
-    }  
+    }
+    // compiler.flush(function(){
+    //     console.log('All temporary files flushed !'); 
+    // });  
 });
 
 router.get('/fullStat' , function(req , res ){
