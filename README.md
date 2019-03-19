@@ -9,7 +9,7 @@ Installation steps:
     1.a. C and C++
         Installation :You need GCC compiler that can compile programs from your cmd/terminal
         Windows - You can get MinGw (http://www.mingw.org/).
-        Linux - Most of the linux versions are installed with gcc by default. If you haven't got , Take a look at Installing GCC .
+        Linux - Most of the linux versions are installed with gcc by default. If you haven't got , Take a look at Installing GCC(https://gcc.gnu.org/wiki/InstallingGCC) .
 
     1.b. Java
         Installion : You need JDK ( Java Development Kit ) to compile Java programs.Click here to download JDK for various platforms.
