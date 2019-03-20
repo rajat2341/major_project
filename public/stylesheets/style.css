@@ -1,12 +1,10 @@
 .my-head{
   background-color:#37474F;
   margin :0;
-  height: 70px;
   width:100%;
 }
 
 .header-style{
-  margin-top: 18px;
   margin-right: 40px;
 
 }
@@ -31,12 +29,7 @@
 .myactive{
   color:#fff;
   background-color: inherit;
-  border-bottom: 6px solid #029cee;
-}
-
-
-.my-head .navbar-nav  li a{
-  margin-top: 10px;
+  border-bottom: 2px solid #029cee;
 }
 
 .my-head ul li.mychoice{
@@ -84,16 +77,12 @@
   }
 
 }
-
 .my-footer{
-  margin-top: 15%;
   background-color: #37474F;
 
 }
-
-
 .my-footer .footer-top{
-  border-bottom: 2px solid #029cee;
+  border-bottom: 0px solid #029cee;
   border-radius: 8px;
 }
 
@@ -785,50 +774,6 @@ ul.breadcrumb li a:hover {
   color: #3F51B5;
 }
 
-.custom-head{
-  width: 65%;
-  margin-left: 195px;
-  margin-top: 30px;
-  border: 1px solid #BDBDBD;
-  border-radius: 0px;
-  border-bottom: 1px;
-  box-shadow: 0px 0px 2px 0px #A5D6A7;
-
-}
-
-.custom-head .inactive{
-  margin-right:  30px;
-  margin-left: 30px;
-  margin-top: 9px;
-  font:bold 15px Helvetica;
-  color:#9E9E9E;
-  -webkit-transition:all 1s ;
-}
-
-.custom-head .inactive:hover{
-  margin-right:  30px;
-  margin-left: 30px;
-  margin-top: 9px;
-  font:bold 15px Helvetica;
-  color:#424242;
-}
-
-.custom-head .active{
-  margin-right:  30px;
-  margin-left: 30px;
-  cursor: default;
-  padding-top: 0px;
-  padding-right: 30px;
-  padding-left: 30px;
-  text-align: center;
-  margin-bottom: px;
-  font:bold 15px Helvetica;
-  border: 1px solid #BDBDBD;
-  margin-top: 10px;
-  border-bottom: 0px;
-  background-color: white;
-}
-
 .code-section{
   background-color: #E8F5E9;
   padding-left: 40px;
@@ -843,15 +788,6 @@ ul.breadcrumb li a:hover {
   margin-bottom: 12px;
   text-shadow:0 1px 1px rgba(0,0,0,0.5);
 
-}
-
-.form-style{
-  margin: 80px 0px 0px 200px;
-  width: 60%;
-  border: 2px solid #009ca1;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0px 0px 2px 0px #005e63;
 }
 
 @media (max-width: 500px) {
@@ -887,9 +823,7 @@ ul.breadcrumb li a:hover {
     margin-right: 10px;
   }
   .list-item-style {
-    height: 50px;
     font-family: Bahnschrift;
-    padding-left: 40px;
   }
 
 }

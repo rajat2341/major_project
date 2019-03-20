@@ -1,14 +1,14 @@
 <%- include('../Partials/layout.ejs') %>
 <div style="background-color: #f6f6f6">
-    <div class="page-header " style="background-color:white;margin-top: 10px;" xmlns="http://www.w3.org/1999/html">
+    <div class="page-header " style="background-color:white;" xmlns="http://www.w3.org/1999/html">
         <ul class="breadcrumb">
             <li><a href="/index/login"><strong>Dashboard</strong></a></li>
             <li><a href="/section/<%=sname%>"><strong><%= sname%></strong></a></li>
             <li><a style="color: #424242"><strong><%= data.qname%></strong></a></li>
         </ul>
     </div>
-
-    <nav class="navbar navbar-default custom-head" style="margin-left:270px;background-color: white">
+    <div class="container" >
+    <nav class="navbar navbar-default custom-head" style="background-color: white">
         <ul class="nav navbar-nav">
             <li class="active"><a >Problem</a></li>
             <li ><a class="inactive" href="#">Leadership</a></li>
@@ -16,19 +16,22 @@
             <li ><a class="inactive" href="#">See Solution</a></li>
         </ul>
     </nav>
-
+    </div>
     <div class="container" >
-        <pre style="background-color: white; color:grey"><h4><strong><%=data.qcode.problem%></strong></h4>
-            <p><h4><strong style="color: black">Sample Input </br></strong>
-                <%=data.qcode.inputformat%></h4>
+        <div class="problem-code">
+        <div class="problem-inner" style="background-color: white; color:grey" >
+            <p><%=data.qcode.problem%></p>
+            <p><span>Sample Input </span>
+                <%=data.qcode.inputformat%>
             </p>
-            <p><h4><strong style="color: black">Sample Output </br> </strong>
-                <%=data.qcode.outputformat%></h4>
+            <p><Span>Sample Output </span>
+                <%=data.qcode.outputformat%><
             </p>
-            <p><h4><strong style="color: black">Constraints</br> </strong>
+            <p><span>Constraints</span>
                 <%=data.qcode.constraints%></h4>
             </p>
-        </pre>
+        </div>
+    </div>
     </div>
     <!-- <div class="contanier" style="background-color: white; border: 1px dotted #009ca1; padding: 40px; border-radius: 10px; box-shadow: 0px 0px 2px 0px #008892;">
         <div style="background-color: grey">
@@ -63,15 +66,8 @@
             $("#extra").hide("fast");
         });
       });
-    $(document).ready(function() {
-        var table = $('#example').DataTable();
-        $('#example tbody').on( 'click', 'tr', function () {
-            console.log( table.row( this ).data()[2] );
-        } );
-    } );
     var editor = CodeMirror.fromTextArea
     (document.getElementById('editor'),{
-        mode:"text/x-csrc",
         theme:"dracula",
         lineNumbers: true,
         autoCloseTags: true,
@@ -79,8 +75,24 @@
         autoCloseBrackets: true,
         matchTags: false,
         extraKeys: {"Ctrl-Space": "autocomplete"}
-    });
-    code.setSize("1000","450");
+    }); 
+    $(document).ready(function() {
+        $('#changeLanguage').change(function(){
+            var option = this.value;
+            if(option === "C")
+                editor.setOption('mode', "text/x-csrc");
+            else if(option === "C++")
+                editor.setOption('mode', "text/x-c++src");
+            else if(option === "Java")
+                editor.setOption('mode', "text/x-java");
+            else
+                editor.setOption('mode', "text/x-python");
+        })
+        // var table = $('#example').DataTable();
+        // $('#example tbody').on( 'click', 'tr', function () {
+        //     console.log( table.row( this ).data()[2] );
+        // } ); 
+      });
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

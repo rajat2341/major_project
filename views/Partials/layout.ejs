@@ -7,6 +7,7 @@
     <link rel="icon" href="" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/mainstyle.css" />
     <link rel="stylesheet" href="/stylesheets/table.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,11 +21,14 @@
         .my-head{
             background-color:#37474F;
             margin :0;
-            height: 70px;
             width:100%;
         }
         .list-style{
             width: 50%;
+        }
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
         }
         @media (max-width: 500px) {
             .list-style{
@@ -70,12 +74,12 @@
 
 <!--*****************************************************************************************************************************************************************************************************-->
     <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="FormModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog login-modal" role="document">
             <div class="modal-content" style="margin-top: 120px">
                 <form method="post" action="/login">
                     <input type="hidden" id="form-id" name="id" />
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: blue">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel"><strong>Login</strong></h4>
                     </div>
                     <div class="modal-body">

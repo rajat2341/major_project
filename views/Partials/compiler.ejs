@@ -1,22 +1,21 @@
-<center>
-    <h1>Compiler</h1>
-</center>
+
 <div class="container">
+    <div class="compiler">
     <form id="myform" name="myform" method="post" action="/compilecode">
     <div>
-        <h3>Code</h3>
         <h5>
-            Language : <select name="lang">
-            <option value="C">C</option>
-            <option value="C++">C++</option>
-            <option value="Java">Java</option>  
-            <option value="Python">Python</option> 
+            Language : <select id="changeLanguage" name="lang">
+            <option  class="option_class" value="C">C</option>
+            <option class="option_class" value="C++">C++</option>
+            <option class="option_class" value="Java">Java</option>  
+            <option class="option_class" value="Python">Python</option> 
             </select>
         </h5>
     </div>
 
-    <div>
+    <div class="editor1" style="background-color: grey;">
         <textarea id="editor" name="code"></textarea>
+        <p class="note">*Note: Press Ctrl/Command+Spacebar for autocomplete suggestions (accuracy dependent on connection stability). </p>
     </div>
     <br/>
     Compile With Input : 
@@ -28,6 +27,7 @@
     <div id="extra">
             <textarea cols="84" wrap="physical" rows="4" name="input" class="textboxid4 style"></textarea>
           </div><br />
-    <input class="btn btn-primary" type="submit" value="submit"  name="submit" />
+   <div class="compiler-btn"> <input class="btn btn-primary" type="submit" value="submit"  name="submit" /></div>
     </form>
+</div>
 </div>

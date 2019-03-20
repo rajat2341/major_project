@@ -10,11 +10,11 @@
         </ul>
     </div>
 </nav>
-<div class="container" style="margin-top: 20px">
+<div class="container">
     <% if(err.length > 0) { %>
-    <div class="alert <%=styletag%> alert-dismissible fade in" style="width: 90%;text-align: center;" >
+    <div class="alert <%=styletag%> alert-dismissible fade in" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><%= err %></strong>
+        <%= err %>
     </div>
     <% } %>
 </div>
