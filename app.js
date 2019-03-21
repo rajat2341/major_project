@@ -11,7 +11,7 @@ var passport=require('passport');
 var logger = require('morgan');
 var mongoDb = require('connect-mongo')(session);
 var index = require('./routes/index');
-var admin= require('./routes/admin/addSection');
+var admin = require('./routes/admin/addSection');
 
 var app = express();
 
@@ -49,12 +49,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 
 app.use(session({
-        secret: 'qwertyuiopasdfghjkl',
-        resave: false,
-        saveUninitialized: false,
-
+      secret: 'qwertyuiopasdfghjkl',
+      resave: false,
+      saveUninitialized: false,
     }
-    )
+  )
 );
 
 require('./config/passport')(passport);
@@ -69,7 +68,7 @@ app.use(function (req, res, next) {
 
 
 app.use('/', index);
-app.use('/admin',admin);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

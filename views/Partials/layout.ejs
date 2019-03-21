@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <p class="navbar-brand header-style"  style="color: white; " >
+                <p class="navbar-brand header-style"  style="color: white; ">
                     <strong >Coding Mania</strong>
                 </p>
             </div>
@@ -56,6 +56,9 @@
                 <ul class="nav navbar-nav ">
                     <li class="myactive"><a href="/" style="color:#CFD8DC  ;  "><span style="color: white"><span class="fa fa-home"></span><strong> Home</strong></span></a></li>
                     <li class="mychoice"><a style="color:#CFD8DC  ; " href="/queries"><span class="fa fa-search"></span><strong> Queries</strong> </a></li>
+                    <% if(user == "admin"){ %>
+                        <li class="mychoice"><a style="color:#CFD8DC  ; " href="/admin/addSection"><strong> Add Section</strong> </a></li>
+                    <%}%>
                 </ul>
                 <% if(user){%>
                 <ul class="nav navbar-nav navbar-right" id="logout">

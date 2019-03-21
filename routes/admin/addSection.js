@@ -10,7 +10,6 @@ var path = require('path');
 var fs = require('fs');
 
 router.get('/addSection',helper.common.isLoggedIn,function (req,res) {
-
      res.render('admin/mainPage',{ user: req.session.user, err: req.flash('msg'),styletag:'alert-danger'});
 });
 
@@ -25,7 +24,6 @@ router.post('/addSection', upload.single('sectionpic'),function (req,res) {
         req.flash('msg',"Section Name cannot be Empty!");
         res.redirect('/admin/add');
     }else {
-
          controllers.sectionControllers.createSection(req.body,req.file,function (err,response) {
             if(err){
                 req.flash('msg',err);
@@ -38,6 +36,6 @@ router.post('/addSection', upload.single('sectionpic'),function (req,res) {
 });
 
 router.get('/addquestions',function (req,res) {
-    res.render('admin/mainPage',{ user: req.session.user, err: req.flash('msg'),styletag:'alert-danger'});
+    res.render('admin/addQuestions',{ user: req.session.user, err: req.flash('msg'),styletag:'alert-danger'});
 });
 module.exports = router;
