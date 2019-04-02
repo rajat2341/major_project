@@ -34,7 +34,6 @@ router.post('/login',passport.authenticate('local-login', { failureRedirect:'/' 
 });
 
 router.get('/signup', function (req, res, next) {
-    req.session.destroy();
     res.render('user/signup', {title: 'SignUp', msg: '',user:''});
 });
 

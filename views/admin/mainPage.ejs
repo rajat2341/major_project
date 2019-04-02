@@ -4,9 +4,7 @@
     <div class="container">
         <ul class="nav navbar-nav">
             <li class="active"><a >Add Section</a></li>
-
-            <li ><a class="inactive" href="/admin/addquestions">Add Questions</a></li>
-
+            <li><a class="inactive" href="/admin/addquestions">Add Questions</a></li>
         </ul>
     </div>
 </nav>
@@ -14,13 +12,12 @@
     <% if(err.length > 0) { %>
     <div class="alert <%=styletag%> alert-dismissible fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <%= err %>
+    <%= err %>
     </div>
     <% } %>
 </div>
 <div class="container" style="margin-top: 3%">
     <form method="post" action="/admin/addSection" enctype="multipart/form-data">
-
             <div class="form-group" >
                 <label>Section Name:</label>
                 <textarea type="text"  class="form-control" name="sectionname" style="width: 50%"></textarea>

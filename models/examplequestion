@@ -1,0 +1,16 @@
+    "sectionname" : "Algorithms",
+    "questionlist" : [ 
+        {
+            "qname" : "Ada Pawns",
+            "qcode" : {
+                "problem" : "Ada is playing pawn chess with Suzumo. Pawn chess is played on a long board with squares in one row. Initially, some of the squares contain pawns.Note that the colours of the squares and pawns do not matter in this game, but otherwise, the standard chess rules apply: no two pawns can occupy the same square at the same time a pawn cannot jump over another pawn (they are no knights!), i.e. if there is a pawn at square i i  ,                             then it can only be moved to sqi−2 i − 2  if squares i−1 i − 1  and i−2                           i − 2  areemptypawnscannotmoveoutside of the board (outs are forbidden)  The players alternate turns; as usual, Ada plays first. In each turn, the current player must choose a pawn and move it either one or two squares to the left of its current position. The player that cannot make a move loses. Can Ada always beat Suzumo? Remember that Ada is a chess grandmaster, so she always plays optimally.",
+                "inputformat" : "The first line of the input contains a single integer T T  denoting the number of test cases. The description of T T  test cases follows. The first and only line of each test case contains a single string S S    with     length N N  the initial board from left to right. An empty square and a square containing a pawn are denoted by the characters and P respectively.",
+                "outputformat" : "For each test case, print a single line containing the string Yes if Ada wins the game or No otherwise (without quotes).",
+                "constraints" : "1≤T≤500 1 ≤ T ≤ 500        ,   2≤N≤128 2 ≤ N ≤ 128        ,   S  contains only characters '.' and 'P'"
+            },
+            "qlevel" : "Easy",
+            "qscore" : {
+                "type" : 10
+            }
+        }
+    ]
