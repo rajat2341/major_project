@@ -6,6 +6,6 @@ var findQuestions =function (criteria,projection,option,callback) {
     models.section.find(criteria, projection, option, callback);
 }
 
-module.exports ={
+module.exports = {
     'findQuestions' :findQuestions
 }

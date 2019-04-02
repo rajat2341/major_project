@@ -49,12 +49,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 
 app.use(session({
-        secret: 'qwertyuiopasdfghjkl',
-        resave: false,
-        saveUninitialized: false,
-
+      secret: 'qwertyuiopasdfghjkl',
+      resave: false,
+      saveUninitialized: false,
     }
-    )
+  )
 );
 
 require('./config/passport')(passport);

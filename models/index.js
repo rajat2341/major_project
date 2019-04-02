@@ -1,4 +1,5 @@
 module.exports = {
     'users': require('./users'),
-    'section' :require('./section')
+    'section' :require('./section'),
+    'examsection' :require('./examsection')
 }

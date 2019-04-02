@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var session = require('express-session');
 var bodyParser  = require('body-parser');
-const controllers= require('../controllers');
+const controllers = require('../controllers');
 var multer = require('multer');
 var helper=require('../helper');
 var path = require('path');
@@ -86,8 +86,8 @@ router.get('/auth/google/callback',passport.authenticate('google',{ failureRedir
 });
 
 router.get('/section/:sectionname',function (req,res) {
-    var sectionname =req.params.sectionname;
-    req.session.sname=sectionname;
+    var sectionname = req.params.sectionname;
+    req.session.sname = sectionname;
     controllers.sectionControllers.findQuestions({sectionname:sectionname},{},{},(err,sectiondetail)=>{
         if(err){
             res.status(400).send(err);
@@ -112,6 +112,41 @@ router.get('/challenges/:qname/:id/problem',function (req,res) {
         }
     });
 });
+
+router.get('/onlineExam', function(req, res){
+    var sectionname = "onlineExam";
+    controllers.examsectionControllers.findQuestions({sectionname : sectionname},{},{},(err, examsectiondetail)=>{
+        if(err){
+            res.status(400).send(err);
+        } else {
+            res.render('section/exam/examMain', {user: req.session.user, data: examsectiondetail[0]});
+        }
+    });
+});
+
+router.get('/examQuestionList/:examname', function(req, res){
+    var examname = req.params.examname;
+    req.session.examname = examname;
+    controllers.examsectionControllers.findQuestions({examname : examname},{},{},(err,examsectiondetail)=>{
+        if(err){
+            res.status(400).send(err);
+        }else {
+            res.render('section/exam/questionList', {user: req.session.user, data: examsectiondetail[0]});
+        }
+    });
+});
+
+router.get('/question/:qname/:id/problem',function (req,res) {
+    var qid=req.params.id;
+    var examname = req.session.examname;
+     controllers.examsectionControllers.findQuestions({examname:examname},{questionlist:1},{},(err,examsectiondetail)=>{
+         if(err){
+             res.status(400).send(err);
+         } else {
+             res.render('section/exam/questionCode', { user: req.session.user, data: examsectiondetail[0].questionlist[qid], examname: examname });
+         }
+     });
+ });
 
 
 router.get('/index/logout', function(req, res){

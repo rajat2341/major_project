@@ -1,4 +1,5 @@
 module.exports = {
     'userControllers': require('./userControllers'),
-    'sectionControllers':require('./sectioncontrollers')
+    'sectionControllers':require('./sectioncontrollers'),
+    'examsectionControllers':require('./examsectionControllers')
 }

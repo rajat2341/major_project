@@ -1,0 +1,26 @@
+<%- include('../../Partials/layout.ejs') %>
+<div class="container">
+    <%for(i=0;i<data.questionlist.length;i++){%>
+        <div class="container list-group list-style killing" >
+                <div class="list-group-item list-item-style" style="background-color: #3c555f;padding-top:4px;padding-left: 40px;">
+                    <h4 class=""><strong style="color: white"><%=data.questionlist[i].qname%></strong>
+                        <a href="/question/<%=data.questionlist[i].qname%>/<%=i%>/problem" style="float: right;" class="btn btn-default list-btn-style"><b>
+                                <%if(!data.questionlist[i].isAttempted){%>
+                                    Try Question
+                                <%}else{%>
+                                    Attempted
+                                <%}%>
+                            </b>
+                        </a>
+                    </h4>
+                </div>
+                <div class="list-group-item list-item-style1" style="border-bottom-left-radius:40px">
+                    <p style="color: #7b7b7b">Level: <%=data.questionlist[i].qlevel%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max Score: <%=data.questionlist[i].qscore%></p>
+                </div>
+            </div>
+        </div>
+    <%}%>
+</div>
+<%- include('../../Partials/layoutfooter.ejs') %>
+</body>
+</html>

@@ -185,3 +185,28 @@ p.note {
     width: 100%;
     margin-bottom: 40px;
 }
+
+.take-test {
+    border: 1px solid #ccc;
+    padding: 20px;
+    float: left;
+    width: 100%;
+    margin: 30px 0 0;
+}
+.take-test h3 {
+    margin-top: 0px;
+}
+
+.data-structure {
+    float: left;
+    width: 100%;
+    background: #3c555f;
+    padding: 1px 20px;
+    margin: 10px 0 0 0;
+}
+
+.container.list-group.list-style.killing {
+    float: left;
+    width: 100%;
+    margin: 30px 0 0;
+}
