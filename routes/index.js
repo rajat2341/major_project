@@ -114,11 +114,13 @@ router.get('/challenges/:qname/:id/problem',function (req,res) {
 
 router.get('/onlineExam', function(req, res){
     var sectionname = "onlineExam";
+    var msg = req.session.redirectmsg;
+    delete req.session.redirectmsg;
     controllers.examsectionControllers.findQuestions({sectionname : sectionname},{},{},(err, examsectiondetail)=>{
         if(err){
             res.status(400).send(err);
         } else {
-            res.render('section/exam/examMain', {user: req.session.user, data: examsectiondetail[0]});
+            res.render('section/exam/examMain', {msg: msg, user: req.session.user, data: examsectiondetail[0]});
         }
     });
 });
@@ -126,27 +128,36 @@ router.get('/onlineExam', function(req, res){
 router.get('/examQuestionList/:examname', function(req, res){
     var examname = req.params.examname;
     req.session.examname = examname;
+    var username = req.session.user;
     controllers.examsectionControllers.findQuestions({examname : examname},{},{},(err,examsectiondetail)=>{
         if(err){
             res.status(400).send(err);
-        }else {
-            res.render('section/exam/questionList', {user: req.session.user, data: examsectiondetail[0]});
+        }
+        else if(!username){
+            req.session.redirectmsg = "Please Login First";
+            res.redirect('/onlineExam');
+        }
+        else{
+            res.render('section/exam/questionList', {user: req.session.user, examname: examname, data: examsectiondetail[0]});
         }
     });
 });
 
-router.get('/question/:qname/:id/problem',function (req,res) {
-    var qid=req.params.id;
-    var examname = req.session.examname;
-     controllers.examsectionControllers.findQuestions({examname:examname},{questionlist:1},{},(err,examsectiondetail)=>{
-         if(err){
-             res.status(400).send(err);
-         } else {
-             res.render('section/exam/questionCode', { user: req.session.user, data: examsectiondetail[0].questionlist[qid], examname: examname });
-         }
-     });
- });
+// router.get('/question/:qname/:id/problem',function (req,res) {
+//     var qid=req.params.id;
+//     var examname = req.session.examname;
+//      controllers.examsectionControllers.findQuestions({examname:examname},{questionlist:1},{},(err,examsectiondetail)=>{
+//          if(err){
+//              res.status(400).send(err);
+//          } else {
+//              res.render('section/exam/questionCode', { user: req.session.user, data: examsectiondetail[0].questionlist[qid], examname: examname });
+//          }
+//      });
+//  });
 
+router.post('/Savecode', function (req, res) {
+    var code = req.body.code;
+});
 
 router.get('/index/logout', function(req, res){
     req.session.destroy();
@@ -160,7 +171,7 @@ router.post('/compilecode' , function (req , res ) {
     var lang = req.body.lang;
     if((lang === "C") || (lang === "C++"))
     {        
-        if(inputRadio === "true")
+        if(inputRadio === "Yes")
         {    
         	var envData = { OS : "windows" , cmd : "g++", options: {timeout:1000 }};	   	
         	compiler.compileCPPWithInput(envData , code ,input , function (data) {

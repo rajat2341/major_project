@@ -1,18 +1,29 @@
 <%- include('../../Partials/layout.ejs') %>
-<div class="container">
-    <div class="take-test">
-    <h3>Instructions</h3>
-    <p><%=data.examinstructions%></p>
-</div>
-    <div class="data-structure">
-        <h4 class=""><strong style="color: white"><%=data.examname%></strong>
-            <a href="/examQuestionList/<%=data.examname%>" style="float: right;" class="btn btn-default list-btn-style"><b>
-                    Take Test
-                </b>
-            </a>
-        </h4>
+<% if(msg){ %>
+    <div class="alert alert-info alert-dismissible fade in" style="text-align: center;" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><%= msg %></strong></div>
+    <% } %>
+<% if(data) {%>
+    <div class="container">
+        <div class="take-test">
+        <h3>Instructions</h3>
+        <p><%=data.examinstructions%></p>
     </div>
-</div>
+        <div class="data-structure">
+            <h4 class=""><strong style="color: white"><%=data.examname%></strong>
+                <a href="/examQuestionList/<%=data.examname%>" style="float: right;" class="btn btn-default list-btn-style"><b>
+                        Take Test
+                    </b>
+                </a>
+            </h4>
+        </div>
+    </div>
+<%} else {%>
+    <div class="container no-test">
+        <h3>There Is No Test Going On Right Now.</h3>
+    </div>
+<% } %>
 <%- include('../../Partials/layoutfooter.ejs') %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

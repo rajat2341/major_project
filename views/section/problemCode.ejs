@@ -19,19 +19,19 @@
     </div>
     <div class="container" >
         <div class="problem-code">
-        <div class="problem-inner" style="background-color: white; color:grey" >
-            <p><%=data.qcode.problem%></p>
-            <p><span>Sample Input </span>
-                <%=data.qcode.inputformat%>
-            </p>
-            <p><Span>Sample Output </span>
-                <%=data.qcode.outputformat%><
-            </p>
-            <p><span>Constraints</span>
-                <%=data.qcode.constraints%></h4>
-            </p>
+            <div class="problem-inner" style="background-color: white; color:grey" >
+                <p><%=data.qcode.problem%></p>
+                <p><span>Sample Input </span>
+                    <%=data.qcode.inputformat%>
+                </p>
+                <p><Span>Sample Output </span>
+                    <%=data.qcode.outputformat%><
+                </p>
+                <p><span>Constraints</span>
+                    <%=data.qcode.constraints%></h4>
+                </p>
+            </div>
         </div>
-    </div>
     </div>
     <!-- <div class="contanier" style="background-color: white; border: 1px dotted #009ca1; padding: 40px; border-radius: 10px; box-shadow: 0px 0px 2px 0px #008892;">
         <div style="background-color: grey">
@@ -41,7 +41,10 @@
         </div>
     </div> -->
 </div>
+
 <%- include('../Partials/compiler.ejs') %>
+<div id="resoutput"></div>
+
 <%- include('../Partials/layoutfooter.ejs') %>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -77,6 +80,28 @@
         extraKeys: {"Ctrl-Space": "autocomplete"}
     }); 
     $(document).ready(function() {
+        $("#compilerbtn").on('click', function(e){
+          var data = {};
+          $.each($('#myform').serializeArray(), function(i, field) {
+              data[field.name] = field.value;
+          });
+          data.code = editor.getValue();
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: '/compilecode',
+                data: data,
+                dataType: 'text',
+                success:function(data){
+                  debugger;
+                  $('#resoutput').html(data);
+                },error:function(error){
+                  debugger;
+                  $('#resoutput').html(error);
+                  console.log(error);
+                }
+            })
+        });
         $('#changeLanguage').change(function(){
             var option = this.value;
             if(option === "C")

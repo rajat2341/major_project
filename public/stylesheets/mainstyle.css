@@ -166,13 +166,13 @@ nav.navbar.navbar-default.custom-head .navbar-nav>li>a {
     font-size: 13px;
     color: #666;
 }
-
 .editor1 {
     float: left;
     width: 100%;
     padding: 10px;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
 }
-
 p.note {
     color: #fff;
     font-size: 10px;
@@ -183,9 +183,13 @@ p.note {
 .compiler {
     float: left;
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
+.compiler h5 {
+    font-size: 13px;
+    margin-top: 0px;
+}
 .take-test {
     border: 1px solid #ccc;
     padding: 20px;
@@ -205,8 +209,189 @@ p.note {
     margin: 10px 0 0 0;
 }
 
-.container.list-group.list-style.killing {
+.list-group.list-style.killing {
     float: left;
     width: 100%;
     margin: 30px 0 0;
+    margin-bottom: 18px;
 }
+
+.container.no-test {
+    border: 1px solid #ccc;
+    padding: 20px;
+    float: none;
+    margin-top: 10px;
+}
+button.submit-test {
+    background: #7142a2;
+    color: #fff;
+    font-size: 13px;
+    border: 1px solid #3c555f;
+    padding: 3px 7px;
+    float: none;
+    margin-top: 10px;
+}
+p.timer {
+    font-size: 18px;
+    margin-top: auto;
+    color: #5bff8f;
+    float: right;
+    margin-bottom: 0px;
+}
+
+  h3.timerclass {
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-right: 0;
+    height: auto;
+    font-size: 17px;
+}
+.headerName {
+    width: 100%;
+    margin: 0 auto;
+    background: #3c555f;
+    padding: 7px 8px;
+    margin-top: 0px;
+}
+
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 11%;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 5px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: #8c8f90;
+    color: #ffff;
+}
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    width: 89%;
+    border-left: none;
+  }
+  
+  .tabcontent p {
+      font-size: 13px;
+  }
+
+  .tabcontent .list-group.list-style.killing {
+    margin: 0;
+}
+
+.quesrion-scroll {
+    float: left;
+    width: 100%;
+    max-height: 451px;
+    overflow-y: auto;
+}
+.tabs-area {
+    float: left;
+    width: 100%;
+    margin-bottom: 28px;
+    display: table;
+}
+.tabs-area .compiler {
+    margin-bottom: 0px;
+}
+.compiler-btn .btn-primary {
+    padding: 3px 7px;
+    font-size: 12px;
+}
+
+.question-submit {
+    float: none;
+    width: 100%;
+    margin: 10px 0 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tabcontent p.note {
+    font-size: 11px;
+}
+
+.tabs-area .container {
+    width: 100%;
+}
+
+span#demo {
+    padding-left:11px;
+}
+
+div#result {
+    width: 100%;
+    padding: 0 10px;
+    font-size: 13px;
+    background: #000;
+    color: #efc83a;
+    margin: 10px 0 0;
+}
+
+
+age-container {
+    margin: 20px;
+  }
+  
+  
+  /* horizontal panel*/
+  
+  .panel-container {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid silver;
+    overflow: hidden;
+    
+    /* avoid browser level touch actions */
+  }
+  
+  .panel-left {
+    flex: 0 0 auto;
+    padding: 10px;
+    width: 470px;
+    min-height: 200px;
+    min-width: 250px;
+}
+  
+  .splitter {
+    flex: 0 0 auto;
+    width: 18px;  
+    background: url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #535353;
+    min-height: 200px;
+    cursor: col-resize;  
+  }
+  
+  .panel-right {
+    flex: 1 1 auto;
+    padding: 10px;
+    width: 100%;
+    min-height: 200px;
+    min-width: 200px;
+    background: #eee;
+  }
+  
+  .editor1 .CodeMirror {
+    height: 255px;
+}
+  
