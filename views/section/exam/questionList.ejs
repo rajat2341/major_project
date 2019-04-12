@@ -1,13 +1,10 @@
-
 <%- include('../../Partials/layout.ejs') %>
 <%- include('../../Partials/timer.ejs') %>
-  <div class="container-fluid">
+  <div class="container-fluid" onload="myPage.init()">
     <div class="tabs-area">
       <div class="tab">
           <%for(i=0;i<data.questionlist.length;i++){%>
-            <button class="tablinks active" onclick="openCity(event, `<%- data.questionlist[i].qcode.problem %>`, `<%- data.questionlist[i].qcode.inputformat %>`, `<%- data.questionlist[i].qcode.outputformat %>`,`<%- data.questionlist[i].qcode.constraints %>`)">London</button>
-            <button class="tablinks" onclick="openCity(event, `hello`, `hello`, `hello`,`hello`)">ABC</button>
-            <!-- <button class="tablinks" onclick="openCity(event, '<%=data.questionlist[i].qname%>','<%=data.questionlist[i].qcode.problem%>')">London</button> -->
+            <button class="tablinks" onclick="openCity(event, `<%- data.examname %>`, `<%- data.sectionname %>`, `<%- data.questionlist[i] %>`, `<%- i %>`, `<%= user  %>`)"><%- data.questionlist[i].qname %></button>
           <%}%>
       </div>
               
@@ -46,7 +43,7 @@
   </div>
 
 
-  
+
   <%- include('../../Partials/layoutfooter.ejs') %>
   <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
   <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
@@ -66,7 +63,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://rawgit.com/RickStrahl/jquery-resizable/master/src/jquery-resizable.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   <script>
+    var selectedQuestion = 0 ;
+    var exam;
+    var section;
+    var userId;
+    var question;
       $(function(){
           $(".static_class").click(function(){
             if($(this).val() === "Yes")
@@ -97,12 +100,13 @@
                 type: 'post',
                 url: '/compilecode',
                 data: data,
-                dataType: 'text',
+                dataType: 'json',
                 success:function(data){
-                  debugger;
-                  $('#result').html("Successfully Compiled And Executed");
+                  if(data.type == "success")
+                    $('#result').html("Successfully Compiled And Executed");
+                  else
+                    $('#result').html(data.out);
                 },error:function(error){
-                  debugger;
                   $('#result').html(error);
                   console.log(error);
                 }
@@ -110,10 +114,11 @@
         });
         $("#saveCode").on('click', function(e){
           var data = {};
-          // $.each($('#myform').serializeArray(), function(i, field) {
-          //     data[field.name] = field.value;
-          // });
+          data.examname = exam;
+          data.sectionname = section;
+          data.qname = question;
           data.code = editor.getValue();
+          data.userId = userId;
             e.preventDefault();
             $.ajax({
                 type: 'post',
@@ -121,10 +126,8 @@
                 data: data,
                 dataType: 'text',
                 success:function(data){
-                  debugger;
                   $('#result').html("Successfully Saved");
                 },error:function(error){
-                  debugger;
                   $('#result').html(error);
                   console.log(error);
                 }
@@ -143,33 +146,58 @@
         }) 
       });
 
-    function openCity( evt, problem, input, output, constraints ) {
-      // Declare all variables
-      // var i, tabcontent, tablinks;
-      document.getElementById("problem").innerHTML = problem;
-      document.getElementById("inputformat").innerHTML = input;
-      document.getElementById("outputformat").innerHTML = output;
-      document.getElementById("constraints").innerHTML = constraints;
-    
-       // Get all elements with class="tablinks" and remove the class "active"
-       tablinks = document.getElementsByClassName("tablinks");
-       for (i = 0; i < tablinks.length; i++) {
-         tablinks[i].className = tablinks[i].className.replace(" active", "");
-       }
+      var myPage = (function() {
+        var that = {};
+        that.init = function () {
+          examname = document.getElementById("timerclass").innerText;
+          user = document.getElementById("user").innerText;
+        }
+        return that;
+      })();
+  
+    function openCity( evt, examname, sectionname, questionlist, index, user ) {
+      selectedQuestion = parseInt(index);
+      exam = examname;
+      section = sectionname;
+      question = questionlist.qname;
+      userId = user;
+      $.confirm({
+            title: '',
+            content: 'Do you want to move to next question?',
+            buttons: {
+                confirm: function () {
+                  document.getElementById("problem").innerHTML = questionlist.qcode.problem;
+                  document.getElementById("inputformat").innerHTML = questionlist.qcode.input;
+                  document.getElementById("outputformat").innerHTML = questionlist.qcode.output;
+                  document.getElementById("constraints").innerHTML = questionlist.qcode.constraints;
+                
+                  // Get all elements with class="tablinks" and remove the class "active"
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
 
-      // Show the current tab, and add an "active" class to the link that opened the tab
-       evt.currentTarget.className += " active";
+                  // Show the current tab, and add an "active" class to the link that opened the tab
+                  evt.path[0].className += " active";
+                },
+                cancel: function () {
+                    console.log('canacel');
+                },
+            }
+        });
     }
 
-    $(".panel-left").resizable({
-   handleSelector: ".splitter",
-   resizeHeight: false,
-   resizeWidth: false,
- });
+    
 
- $(".panel-top").resizable({
-   handleSelector: ".splitter-horizontal",
-   resizeWidth: false,
+    $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      resizeWidth: false,
+    });
+
+    $(".panel-top").resizable({
+      handleSelector: ".splitter-horizontal",
+      resizeWidth: false,
    
  });
   </script>

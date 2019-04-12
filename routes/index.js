@@ -177,11 +177,11 @@ router.post('/compilecode' , function (req , res ) {
         	compiler.compileCPPWithInput(envData , code ,input , function (data) {
         		if(data.error)
         		{
-        			res.send(data.error);    		
+        			res.send({out : data.error, type : "error"});    		
         		}
         		else
         		{
-        			res.send(data.output);
+        			res.send({ out : data.output, type :"success"});
         		}
         	});
 	   }
@@ -191,11 +191,11 @@ router.post('/compilecode' , function (req , res ) {
         	compiler.compileCPP(envData , code , function (data) {
                 if(data.error)
                 {
-                    res.send(data.error);
+                    res.send({out : data.error, type : "error"});
                 }    	
                 else
                 {
-                    res.send(data.output);
+                    res.send({ out : data.output, type :"success"});
                 }
             });
 	   }

@@ -183,7 +183,7 @@ p.note {
 .compiler {
     float: left;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 13px;
 }
 
 .compiler h5 {
@@ -341,15 +341,19 @@ span#demo {
 }
 
 div#result {
-    width: 100%;
-    padding: 0 10px;
-    font-size: 13px;
-    background: #000;
-    color: #efc83a;
     margin: 10px 0 0;
 }
 
-
+div#result, div#resoutput {
+    width: 100%;
+    padding: 0 10px;
+    font-size: 15px;
+    background: #000;
+    color: #efc83a;
+}
+ div#resoutput {
+    margin-bottom: 40px;
+}
 age-container {
     margin: 20px;
   }
