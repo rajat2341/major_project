@@ -1,10 +1,10 @@
 <%- include('../../Partials/layout.ejs') %>
 <%- include('../../Partials/timer.ejs') %>
-  <div class="container-fluid" onload="myPage.init()">
+  <div class="container-fluid">
     <div class="tabs-area">
       <div class="tab">
           <%for(i=0;i<data.questionlist.length;i++){%>
-            <button class="tablinks" onclick="openCity(event, `<%- data.examname %>`, `<%- data.sectionname %>`, `<%- data.questionlist[i] %>`, `<%- i %>`, `<%= user  %>`)"><%- data.questionlist[i].qname %></button>
+            <button class="tablinks" onclick="openCity(event, `<%- i %>`, `<%- data.questionlist[i].qname %>`, `<%- data.questionlist[i].qcode.problem %>`, `<%- data.questionlist[i].qcode.inputformat %>`, `<%- data.questionlist[i].qcode.outputformat %>`, `<%- data.questionlist[i].qcode.constraints %>`)"><%- data.questionlist[i].qname %></button>
           <%}%>
       </div>
               
@@ -35,10 +35,9 @@
                       </div>
                   </div>
               </div>
-          
           </div>
       </div>        
-      <div class="question-submit"><button class="submit-test btn btn-primary" type="submit">Submit Test</button></div>   
+      <div class="question-submit"><a class="submit-test btn btn-primary" href="/SubmitTest">Submit Test</a></div>   
     </div>
   </div>
 
@@ -59,17 +58,17 @@
   <script src="/scripts/codemirror/addon/hint/show-hint.js"></script>
   <script src="/scripts/codemirror/addon/hint/css-hint.js"></script>
   <link href="/scripts/codemirror/addon/hint/show-hint.css" rel="stylesheet"/>
-  <!-- <script>window.jQuery = window.$ = require('jquery');</script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://rawgit.com/RickStrahl/jquery-resizable/master/src/jquery-resizable.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   <script>
     var selectedQuestion = 0 ;
-    var exam;
-    var section;
-    var userId;
-    var question;
+    var exam = `<%- data.examname %>`;
+    var section = `<%- data.sectionname %>`;
+    var userId = `<%= user %>`;
+    var question = `<%- data.questionlist[0].qname %>`;
+
       $(function(){
           $(".static_class").click(function(){
             if($(this).val() === "Yes")
@@ -89,6 +88,14 @@
           extraKeys: {"Ctrl-Space": "autocomplete"}
       }); 
       $(document).ready(function() {
+        window.location.hash="no-back-button";
+        window.location.hash="Again-No-back-button";
+        window.onhashchange=function(){window.location.hash="no-back-button";}
+        
+        window.onbeforeunload = function () {
+          return false;
+        }
+
         $("#compilerbtn").on('click', function(e){
           var data = {};
           $.each($('#myform').serializeArray(), function(i, field) {
@@ -124,7 +131,7 @@
                 type: 'post',
                 url: '/Savecode',
                 data: data,
-                dataType: 'text',
+                dataType: 'json',
                 success:function(data){
                   $('#result').html("Successfully Saved");
                 },error:function(error){
@@ -145,49 +152,39 @@
                 editor.setOption('mode', "text/x-python");
         }) 
       });
-
-      var myPage = (function() {
-        var that = {};
-        that.init = function () {
-          examname = document.getElementById("timerclass").innerText;
-          user = document.getElementById("user").innerText;
-        }
-        return that;
-      })();
   
-    function openCity( evt, examname, sectionname, questionlist, index, user ) {
-      selectedQuestion = parseInt(index);
-      exam = examname;
-      section = sectionname;
-      question = questionlist.qname;
-      userId = user;
-      $.confirm({
-            title: '',
-            content: 'Do you want to move to next question?',
-            buttons: {
-                confirm: function () {
-                  document.getElementById("problem").innerHTML = questionlist.qcode.problem;
-                  document.getElementById("inputformat").innerHTML = questionlist.qcode.input;
-                  document.getElementById("outputformat").innerHTML = questionlist.qcode.output;
-                  document.getElementById("constraints").innerHTML = questionlist.qcode.constraints;
-                
-                  // Get all elements with class="tablinks" and remove the class "active"
-                  tablinks = document.getElementsByClassName("tablinks");
-                  for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                  }
+    function openCity( evt, index, questionname, problem, input, output, constraints) {
+      if(selectedQuestion != parseInt(index)){
+        selectedQuestion = parseInt(index); 
+        var question = questionname;
+        $.confirm({
+              title: 'Do you want to move to next question?',
+              content: '**Submit Your Code unless it will be gone..',
+              buttons: {
+                  confirm: function () {
+                    document.getElementById("problem").innerHTML = problem;
+                    document.getElementById("inputformat").innerHTML = input;
+                    document.getElementById("outputformat").innerHTML = output;
+                    document.getElementById("constraints").innerHTML = constraints;
+                  
+                    // Get all elements with class="tablinks" and remove the class "active"
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                      tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    
+                    editor.setValue('');
 
-                  // Show the current tab, and add an "active" class to the link that opened the tab
-                  evt.path[0].className += " active";
-                },
-                cancel: function () {
-                    console.log('canacel');
-                },
-            }
-        });
-    }
-
-    
+                    // Show the current tab, and add an "active" class to the link that opened the tab
+                    evt.path[0].className += " active";
+                  },
+                  cancel: function () {
+                      console.log('canacel');
+                  },
+              }
+          });
+        }
+      }
 
     $(".panel-left").resizable({
       handleSelector: ".splitter",

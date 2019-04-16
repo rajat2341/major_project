@@ -222,7 +222,7 @@ p.note {
     float: none;
     margin-top: 10px;
 }
-button.submit-test {
+a.submit-test {
     background: #7142a2;
     color: #fff;
     font-size: 13px;

@@ -31,6 +31,8 @@ var countDownDate = new Date();
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("demo").innerHTML = "Time Up";
+            alert("Time Up");
+            window.onbeforeunload = null
             window.location.href = "/onlineExam";
         }
     }, 1000);

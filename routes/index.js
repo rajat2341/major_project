@@ -74,8 +74,6 @@ router.post('/signup', function (req, res) {
     }
 );
 
-
-
 router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
 // the callback after google has authenticated the user
@@ -143,20 +141,30 @@ router.get('/examQuestionList/:examname', function(req, res){
     });
 });
 
-// router.get('/question/:qname/:id/problem',function (req,res) {
-//     var qid=req.params.id;
-//     var examname = req.session.examname;
-//      controllers.examsectionControllers.findQuestions({examname:examname},{questionlist:1},{},(err,examsectiondetail)=>{
-//          if(err){
-//              res.status(400).send(err);
-//          } else {
-//              res.render('section/exam/questionCode', { user: req.session.user, data: examsectiondetail[0].questionlist[qid], examname: examname });
-//          }
-//      });
-//  });
 
 router.post('/Savecode', function (req, res) {
+    var sectionname = req.body.sectionname;
+    var examname = req.body.examname;
+    var qname = req.body.qname;
     var code = req.body.code;
+    var user = req.body.userId;
+    if(sectionname == "onlineExam"){
+        controllers.examsectionControllers.findQuestions({examname : examname},{},{},(err, examsectiondetail)=>{
+            var data = examsectiondetail[0].questionlist;
+            for(var i = 0;i < data.length; i++){
+                if(data[i].qname == qname){
+                    
+                }
+            }
+        });
+    }
+    else{
+
+    }
+});
+
+router.post('/SubmitTest', function (req, res) {
+   console.log("hello");
 });
 
 router.get('/index/logout', function(req, res){
