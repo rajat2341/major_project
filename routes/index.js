@@ -150,11 +150,10 @@ router.post('/Savecode', function (req, res) {
     var user = req.body.userId;
     if(sectionname == "onlineExam"){
         controllers.examsectionControllers.findQuestions({examname : examname},{},{},(err, examsectiondetail)=>{
-            var data = examsectiondetail[0].questionlist;
-            for(var i = 0;i < data.length; i++){
-                if(data[i].qname == qname){
-                    
-                }
+            if(err){
+                res.status(400).send(err);
+            } else {
+                
             }
         });
     }
@@ -163,8 +162,33 @@ router.post('/Savecode', function (req, res) {
     }
 });
 
-router.post('/SubmitTest', function (req, res) {
-   console.log("hello");
+router.get('/SubmitTest', function (req, res) {
+    var sectionname = "onlineExam";
+    // var examname = req.body.examname;
+    // var user = req.body.userId;
+    var msg = 'Test Completed';
+    var score = 0;
+    delete req.session.redirectmsg;
+    controllers.examsectionControllers.findQuestions({sectionname : sectionname},{},{},(err, examsectiondetail)=>{
+        if(err){
+            res.status(400).send(err);
+        } else {
+            // var data = examsectiondetail[0];
+            // for(var i = 0;i < data.length;i++){
+            //     if(data[i].examname == examname){
+            //         var list = data[i].questionlist;
+            //         for(var j = 0;j < list.length;j++){
+            //             for(var k = 0;k < list[j].qusersolutions.length;k++){
+            //                 if(list[j].qusersolutions[k].user == user){
+            //                     score += list[j].qusersolutions[k].score;
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+            res.render('section/exam/examMain', {score : 1, msg: msg, user: req.session.user, data: examsectiondetail[0]});
+        }
+    });
 });
 
 router.get('/index/logout', function(req, res){

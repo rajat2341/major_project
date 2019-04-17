@@ -5,18 +5,25 @@ var examsection = mongoose.Schema({
         examinstructions                      :String,
         examname                              :String,
         sectionphoto                          :String,
+        userInfo:[{
+            user : String,
+            isEAttempted: Boolean,
+        }],
         questionlist                          :[{ qname  :String,
-                                                  qcode    :{
+                                                  qcode    : {
                                                         "problem":String,
                                                         "inputformat":String,
                                                         "outputformat":String,
                                                         "constraints":String},
-                                                  qlevel :String,
-                                                  qscore: {  type:Number },
-                                                  qsolutions:{
-                                                      type : Array , "default" : [] },
-                                                  isAttempted: Boolean
-        } ]
+                                                  qsolutions: { score : Number,
+                                                                code : String
+                                                            },
+                                                  qusersolutions: [{
+                                                       user : String , 
+                                                        score : Number,
+                                                        code : String,
+                                                     }],                   
+        }]
     },
 );
 

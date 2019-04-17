@@ -2,8 +2,13 @@
 <% if(msg){ %>
     <div class="alert alert-info alert-dismissible fade in" style="text-align: center;" >
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><%= msg %></strong></div>
-    <% } %>
+        <%if(score) { %>
+            <strong><%= msg %><br/>You Scored : <%= score%></strong>
+        <% } else { %>
+            <strong><%= msg %></strong>
+        <% } %>
+    </div>
+<% } %>
 <% if(data) {%>
     <div class="container">
         <div class="take-test">
@@ -12,7 +17,8 @@
     </div>
         <div class="data-structure">
             <h4 class=""><strong style="color: white"><%=data.examname%></strong>
-                <a href="/examQuestionList/<%=data.examname%>" style="float: right;" class="btn btn-default list-btn-style"><b>
+                <a href="/examQuestionList/<%=data.examname%>" style="float: right;" class="btn btn-default list-btn-style">
+                    <b>
                         Take Test
                     </b>
                 </a>

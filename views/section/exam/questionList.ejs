@@ -10,21 +10,19 @@
               
       <div class="tabcontent">
           <div class="killing" >
-
               <div class="page-container">
                   <div class="panel-container">
                       <div class="panel-left">
                           <div>
                               <div class="quesrion-scroll">
                                 <p id="problem" class=""><%- data.questionlist[0].qcode.problem %></p>
-                                <p><span>Sample Input </span></p>
+                                <p><span><strong>Sample Input</strong></span></p>
                                 <p id="inputformat" class=""><%- data.questionlist[0].qcode.inputformat %></p>
-                                <p><span>Sample Output </span></p>
+                                <p><span><strong>Sample Output</strong></span></p>
                                 <p id="outputformat" class=""><%- data.questionlist[0].qcode.outputformat %>></p>
-                                <p><span>Constraints</span></p>
+                                <p><span><strong>Constraints</strong></span></p>
                                 <p id="constraints" class=""><%- data.questionlist[0].qcode.constraints %></p>
                               </div>
-                              
                             </div>
                       </div>
                       <div class="splitter">
@@ -37,7 +35,7 @@
               </div>
           </div>
       </div>        
-      <div class="question-submit"><a class="submit-test btn btn-primary" href="/SubmitTest">Submit Test</a></div>   
+      <div class="question-submit"><a class="submit-test btn btn-primary" href="/SubmitTest" type="button">Submit Test</a></div>  
     </div>
   </div>
 
